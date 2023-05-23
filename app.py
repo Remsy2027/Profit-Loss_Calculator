@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from bsedata.bse import BSE
 
 app = Flask(__name__)
@@ -54,8 +54,19 @@ stocks = {
     }
 }
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        stock = request.form['stock']
+        purchase_price = float(request.form['purchase_price'])
+        quantity = int(request.form['quantity'])
+
+        stocks[stock] = {
+            "code": stock,
+            "price": purchase_price,
+            "quantity": quantity
+        }
+
     stock_data = []
 
     total_invested_amount = 0
