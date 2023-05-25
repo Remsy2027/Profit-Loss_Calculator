@@ -101,6 +101,7 @@ def index():
         stock_data.append({
             "stock": stock,
             "purchase_price": purchase_price,
+            "quantity": quantity,
             "current_price": current_price,
             "status": status,
             "color": color,

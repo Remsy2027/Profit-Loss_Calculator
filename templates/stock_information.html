@@ -54,6 +54,7 @@
             <tr>
                 <th>Stock</th>
                 <th>Purchase Price</th>
+                <th>Quantity</th>
                 <th>Current Price</th>
                 <th>Status</th>
                 <th>Invested Amount</th>
@@ -63,6 +64,7 @@
             <tr>
                 <td>{{ stock.stock }}</td>
                 <td>{{ stock.purchase_price }}</td>
+                <td>{{ stock.quantity }}</td>
                 <td>{{ stock.current_price }}</td>
                 <td class="{% if stock.color == 'green' %}profit{% elif stock.color == 'red' %}loss{% endif %}">{{ stock.status }}</td>
                 <td>{{ stock.invested_amount }}</td>
@@ -70,7 +72,7 @@
             </tr>
             {% endfor %}
             <tr>
-                <td class="total" colspan="4">Total Invested Amount:</td>
+                <td class="total" colspan="5">Total Invested Amount:</td>
                 <td class="total">{{ total_invested_amount }}</td>
                 <td class="total">{{ total_current_amount }}</td>
             </tr>
