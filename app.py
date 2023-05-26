@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 b = BSE()
 
-# Stocks With Their Company Code
+# Stocks With Their Company Code and Average Price
 stocks = {
     "TATA_POWER": {
         "code": "500400",
@@ -84,13 +84,19 @@ def index():
             profit = int((current_price - purchase_price) * quantity * 1.5)
             color = "green"
             status = f"Profit: {profit}"
+            action = "Wait"
+            action_color = "red"
         elif current_price == purchase_price:
             color = "black"
             status = "No Profit No Loss"
+            action = "Wait"
+            action_color = "red"
         else:
             loss = int((purchase_price - current_price) * quantity)
             color = "red"
             status = f"Loss: {loss}"
+            action = "Wait"
+            action_color = "red"
 
         invested_amount = purchase_price * quantity
         current_amount = current_price * quantity
@@ -105,6 +111,8 @@ def index():
             "current_price": current_price,
             "status": status,
             "color": color,
+            "action": action,
+            "action_color": action_color,
             "invested_amount": invested_amount,
             "current_amount": current_amount
         })
