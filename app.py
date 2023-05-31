@@ -1,6 +1,3 @@
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from flask import Flask, render_template, request
 from bsedata.bse import BSE
 
@@ -56,32 +53,6 @@ stocks = {
         "quantity": 75
     }
 }
-
-def send_email(subject, body):
-    # Email Configuration
-    sender_email = "mohitphotoart1980@gmail.com"
-    sender_password = "jljjrzsconxuopry"
-    receiver_email = "chakudi2027@gmail.com"
-    smtp_server = "smtp.gmail.com"
-    smtp_port = 587
-
-    # Create a multipart message
-    message = MIMEMultipart()
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    message["Subject"] = subject
-
-    # Add body to the email
-    message.attach(MIMEText(body, "plain"))
-
-    # Setup SMTP server
-    server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()
-    server.login(sender_email, sender_password)
-
-    # Send email
-    server.sendmail(sender_email, receiver_email, message.as_string())
-    server.quit()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -146,15 +117,7 @@ def index():
             "current_amount": current_amount
         })
 
-        # Check if profit exceeds 5000
-        if profit > 5000:
-            subject = "Profit Alert"
-            body = f"Congratulations! Your profit for {stock} has exceeded 5000."
-            send_email(subject, body)
-
-    return render_template('stock_information.html', stocks=stock_data, total_invested_amount=total_invested_amount,
-                           total_current_amount=total_current_amount)
-
+    return render_template('stock_information.html', stocks=stock_data, total_invested_amount=total_invested_amount, total_current_amount=total_current_amount)
 
 if __name__ == '__main__':
     app.run()
