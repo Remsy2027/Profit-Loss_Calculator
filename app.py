@@ -3,7 +3,7 @@ from bsedata.bse import BSE
 
 app = Flask(__name__)
 
-b = BSE()
+b = BSE(update_codes = True)  # Update the codes to fetch the latest data
 
 # Stocks With Their Company Code and Average Price
 stocks = {
@@ -68,7 +68,6 @@ def index():
         }
 
     stock_data = []
-
     total_invested_amount = 0
     total_current_amount = 0
 
