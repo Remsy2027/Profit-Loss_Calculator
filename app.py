@@ -32,10 +32,10 @@ stocks = {
         "price": 1648,
         "quantity": 19
     },
-    "Aether_Industries": {
-        "code": "543534",
-        "price": 915,
-        "quantity": 11
+    "Virinchi_Ltd": {
+        "code": "532372",
+        "price": 51.50,
+        "quantity": 275
     },
     "Clean_Science_and_Technology": {
         "code": "543318",
